@@ -5,7 +5,6 @@ AllCops:
     - 'bin/**/*'
     - 'db/**/*'
     - 'config/**/*'
-    - 'node_modules/**/*'
   NewCops: enable
 
 Style/FrozenStringLiteralComment:
