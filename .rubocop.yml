@@ -1,0 +1,23 @@
+AllCops:
+  TargetRubyVersion: 2.7.1
+  Exclude:
+    - 'app/channels/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+  NewCops: enable
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always_true
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
