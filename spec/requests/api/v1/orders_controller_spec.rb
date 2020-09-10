@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Api::V1::OrdersController, type: :request do
   describe 'POST #create' do
     context 'when it succeeds' do
-      let(:params) { { foo: 'bar'} }
+      let(:params) { { foo: 'bar' } }
 
       before { post api_v1_orders_path, params: params }
 
