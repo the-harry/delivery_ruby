@@ -44,6 +44,9 @@ rubocop
 rspec
 ```
 
+Coverage report can be found at `coverage/index.html`.
+
+
 ## Sending an order
 
 To create a new order you must send a post request containing the raw order data. e.g:
