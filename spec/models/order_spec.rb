@@ -7,6 +7,10 @@ RSpec.describe Order, type: :model do
     it { is_expected.to have_one(:customer) }
     it { is_expected.to have_many(:items) }
     it { is_expected.to have_many(:payments) }
+
+    it { is_expected.to accept_nested_attributes_for(:customer) }
+    it { is_expected.to accept_nested_attributes_for(:items) }
+    it { is_expected.to accept_nested_attributes_for(:payments) }
   end
 
   describe 'validations' do
