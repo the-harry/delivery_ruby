@@ -43,15 +43,16 @@
       "date_created":"2019-06-24T16:45:33.000-04:00",
       "receiver_address":{
          "id":1051695306,
-         "address_line":"Rua Fake de Testes 3454",
-         "street_name":"Rua Fake de Testes",
+         "address_line":"Rua de Testes Fake 3454",
+         "street_name":"Rua de Testes Fake",
          "street_number":"3454",
-         "comment":"teste",
+         "comment":"galpao",
          "zip_code":"85045020",
          "city":{
             "name":"Cidade de Testes"
          },
          "state":{
+            "id":"SP",
             "name":"São Paulo"
          },
          "country":{
