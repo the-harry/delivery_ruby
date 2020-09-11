@@ -5,7 +5,7 @@ require 'rails_helper'
 describe PayloadParser do
   let(:input_json) { File.read('spec/fixtures/raw_order.json') }
 
-  let(:expected_costumer) do
+  let(:expected_customer) do
     {
       external_code: '136226073',
       name: 'JOHN DOE',
@@ -102,8 +102,8 @@ describe PayloadParser do
     expect(subject.number).to eq('3454')
   end
 
-  it 'returns costumer data' do
-    expect(subject.customer_block).to eq(expected_costumer)
+  it 'returns customer data' do
+    expect(subject.customer_block).to eq(expected_customer)
   end
 
   it 'returns items data' do
