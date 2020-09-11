@@ -1,25 +1,59 @@
-# README
+# Ruby Delivery
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Stack
 
-Things you may want to cover:
+* `ruby 2.7.1`
+* `rails 6.0.3`
+* `postgres 12`
+* `Docker`
 
-* Ruby version
+## About
 
-* System dependencies
+This API receives an incoming order, parses it and send the parsed result to other API.
 
-* Configuration
+## Getting started
 
-* Database creation
+To run the project ensure that you have docker and docker-compose installed and follow this instructions:
 
-* Database initialization
+```bash
+# add .env to project
+mv .env.sample .env
 
-* How to run the test suite
+# build project
+docker-compose build
 
-* Services (job queues, cache servers, search engines, etc.)
+# start the server
+docker-compose up
 
-* Deployment instructions
+# in other terminal run the following to preprate DB and its deps
+docker-compose exec web bin/setup
 
-* ...
-# delivery_ruby
+# to access the container run
+docker-compose exec web bash
+```
+
+## Testing
+
+Inside the web container run:
+
+```bash
+# lint the code
+rubocop
+
+# run test suit
+rspec
+```
+
+## Sending an order
+
+To create a new order you must send a post request containing the raw order data. e.g:
+
+* `verb` - `POST`
+* `endpoint` - `/api/v1/order`
+* `body` - [spec/fixtures/raw_order.json](spec/fixtures/raw_order.json)
+
+```bash
+curl -H 'Content-Type: application/json' \
+     -d @spec/fixtures/raw_order.json \
+     'http://localhost/api/v1/order'
+```
