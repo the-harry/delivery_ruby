@@ -20,3 +20,11 @@ Style/ClassAndModuleChildren:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/AbcSize:
+  Enabled: true
+  Exclude:
+    - app/models/payload_builder.rb
