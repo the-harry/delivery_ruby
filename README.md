@@ -57,3 +57,9 @@ curl -H 'Content-Type: application/json' \
      -d @spec/fixtures/raw_order.json \
      'http://localhost/api/v1/order'
 ```
+
+* Possible responses:
+
+  - 201 - Successfully created
+  - 422 - Cant create order, please check your params  
+  - 503 - Cant send order to remote server
