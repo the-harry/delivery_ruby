@@ -29,15 +29,17 @@ class PayloadBuilder
       dt_order_create: data.dt_order_create,
       postal_code: data.postal_code,
       number: data.number,
-      customer: data.customer_block,
-      items: data.items_block,
-      payments: data.payments_block
+      customer_attributes: data.customer_block,
+      items_attributes: data.items_block,
+      payments_attributes: data.payments_block
     }
   end
 
   private
 
   def camel_case_payload
-    payload.deep_transform_keys! { |key| key.to_s.camelize(:lower) }
+    payload.deep_transform_keys! do |key|
+      key.to_s.gsub('attributes', '').camelize(:lower)
+    end
   end
 end

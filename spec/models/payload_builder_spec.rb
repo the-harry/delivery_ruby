@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe PayloadBuilder do
   describe '.build!' do
-    let(:good_json) { File.read('spec/fixtures/raw_order.json') }
-    let(:bad_json) { File.read('spec/fixtures/raw_order_missing_fields.json') }
+    let(:good_json) { JSON.parse(File.read('spec/fixtures/raw_order.json')) }
+    let(:bad_json) { JSON.parse(File.read('spec/fixtures/raw_order_missing_fields.json')) }
 
     context 'when it succeeds' do
       let(:expected_json) { File.read('spec/fixtures/processed_order.json') }
