@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe PayloadParser do
+describe Payload::Parser do
   let(:input_json) { JSON.parse(File.read('spec/fixtures/raw_order.json')) }
 
   let(:expected_customer) do

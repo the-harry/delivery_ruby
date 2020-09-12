@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe PayloadBuilder do
+describe Payload::Builder do
   describe '.build!' do
     let(:good_json) { JSON.parse(File.read('spec/fixtures/raw_order.json')) }
     let(:bad_json) { JSON.parse(File.read('spec/fixtures/raw_order_missing_fields.json')) }

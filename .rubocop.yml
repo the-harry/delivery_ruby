@@ -29,4 +29,4 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Enabled: true
   Exclude:
-    - app/models/payload_builder.rb
+    - app/models/payload/builder.rb

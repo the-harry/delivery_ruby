@@ -15,7 +15,7 @@ class Api::V1::OrdersController < ApplicationController
   private
 
   def set_payload_builder
-    @builder = PayloadBuilder.new(order_params)
+    @builder = Payload::Builder.new(order_params)
   end
 
   def create_order

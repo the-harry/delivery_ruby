@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PayloadParser
+class Payload::Parser
   attr_reader :data
 
   def initialize(data)

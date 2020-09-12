@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class PayloadBuilder
+class Payload::Builder
   attr_reader :data
 
   def initialize(data)
-    @data = PayloadParser.new(data)
+    @data = Payload::Parser.new(data)
   end
 
   def build!
