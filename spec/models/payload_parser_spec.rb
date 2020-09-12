@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe PayloadParser do
-  let(:input_json) { File.read('spec/fixtures/raw_order.json') }
+  let(:input_json) { JSON.parse(File.read('spec/fixtures/raw_order.json')) }
 
   let(:expected_customer) do
     {

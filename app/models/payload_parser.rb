@@ -4,7 +4,7 @@ class PayloadParser
   attr_reader :data
 
   def initialize(data)
-    @data = JSON.parse(data)
+    @data = data
   end
 
   def external_code
@@ -17,6 +17,8 @@ class PayloadParser
 
   def sub_total
     format('%<total>.2f', total: data['total_amount'])
+  rescue TypeError
+    nil
   end
 
   def delivery_fee
@@ -81,6 +83,8 @@ class PayloadParser
       email: buyer['email'].to_s,
       contact: "#{buyer_phone['area_code']}#{buyer_phone['number']}"
     }
+  rescue NoMethodError
+    {}
   end
 
   def items_block
@@ -90,10 +94,12 @@ class PayloadParser
         name: item.dig('item', 'title'),
         price: item['full_unit_price'],
         quantity: item['quantity'],
-        total: item['unit_price'] * item['quantity'],
+        total: item['unit_price'].to_f * item['quantity'].to_i,
         sub_items: []
       }
     end
+  rescue NoMethodError
+    []
   end
 
   def payments_block
@@ -103,6 +109,8 @@ class PayloadParser
         value: payment['total_paid_amount']
       }
     end
+  rescue NoMethodError
+    []
   end
 
   def total_shipping
