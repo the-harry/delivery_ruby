@@ -13,6 +13,16 @@ describe BaseService do
 
       expect(service).to have_received(:call).with(arguments)
     end
+
+    it 'also delegates the call if called with bang' do
+      arguments = double('service call arguments')
+      service = instance_spy(described_class)
+      allow(described_class).to receive(:new).and_return(service)
+
+      described_class.call!(arguments)
+
+      expect(service).to have_received(:call!).with(arguments)
+    end
   end
 
   describe '#call' do
