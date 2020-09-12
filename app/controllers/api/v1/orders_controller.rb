@@ -1,55 +1,70 @@
 # frozen_string_literal: true
 
 class Api::V1::OrdersController < ApplicationController
+  before_action :set_payload_builder
+  before_action :create_order
+
   def create
-    builder = PayloadBuilder.new(order_params)
-    order = Order.new(builder.payload)
-
-    if order.save
-      render status: :created if ProcessOrderService.call(builder.build!)
-
-      render status: :service_unavailable
+    if ProcessOrderService.call(@builder.build!)
+      render status: :created
     else
-      render status: :unprocessable_entity, json: { errors: order.errors.full_messages }
+      render status: :service_unavailable
     end
   end
 
   private
 
+  def set_payload_builder
+    @builder = PayloadBuilder.new(order_params)
+  end
+
+  def create_order
+    attributes = @builder.payload
+    attributes[:items_attributes].map! { |hash| hash.except!(:sub_items) }
+
+    @order = Order.create!(attributes)
+  end
+
   def order_params
-    params.require(:order).permit(
-      :external_code,
+    params.permit(
+      :id,
       :store_id,
-      :sub_total,
-      :delivery_fee,
-      :total,
-      :country,
-      :state,
-      :city,
-      :district,
-      :street,
-      :complement,
-      :latitude,
-      :longitude,
-      :dt_order_create,
-      :postal_code,
-      :number,
-      customer_attributtes: %i[
-        external_code
-        name
-        email
-        contact
+      :date_created,
+      :total_amount,
+      :total_shipping,
+      :total_amount_with_shipping,
+      order_items: [
+        :quantity,
+        :unit_price,
+        :full_unit_price,
+        { item: %i[id title] }
       ],
-      items_attributtes: %i[
-        external_code
-        name
-        price
-        quantity
-        total
+      payments:
+        %i[payment_type total_paid_amount],
+      shipping: [
+        {
+          receiver_address:
+          [
+            :street_name,
+            :street_number,
+            :comment,
+            :zip_code,
+            :latitude,
+            :longitude,
+            {
+              city: [:name],
+              state: [:id],
+              country: [:id],
+              neighborhood: [:name]
+            }
+          ]
+        }
       ],
-      payments_attributtes: %i[
-        type
-        value
+      buyer: [
+        :id, :nickname, :email,
+        {
+          phone: %i[area_code number]
+        }
       ]
     )
   end
