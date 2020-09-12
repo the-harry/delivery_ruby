@@ -23,6 +23,8 @@ Style/Documentation:
 
 Metrics/MethodLength:
   Max: 35
+  Exclude:
+    - app/controllers/api/v1/orders_controller.rb
 
 Metrics/AbcSize:
   Enabled: true
