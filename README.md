@@ -58,7 +58,7 @@ To create a new order you must send a post request containing the raw order data
 ```bash
 curl -H 'Content-Type: application/json' \
      -d @spec/fixtures/raw_order.json \
-     'http://localhost/api/v1/order'
+     'http://localhost/api/v1/orders'
 ```
 
 * Possible responses:
