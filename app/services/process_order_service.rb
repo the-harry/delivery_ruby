@@ -6,15 +6,15 @@ class ProcessOrderService < BaseService
   def call(payload)
     response = connection.request(request(payload))
 
-    respose.code == '200' ? true : false
+    response.code == '200'
   end
 
   private
 
   def request(body)
     req = Net::HTTP::Post.new(URL.path)
-    req["Content-Type"] = "application/json"
-    req['X-Sent'] = Time.zone.now.strftime("%Hh%M - %d/%m/%y")
+    req['Content-Type'] = 'application/json'
+    req['X-Sent'] = Time.zone.now.strftime('%Hh%M - %d/%m/%y')
     req.body = body
     req
   end

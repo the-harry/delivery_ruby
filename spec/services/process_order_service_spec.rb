@@ -13,7 +13,7 @@ describe ProcessOrderService do
     it 'adds timestamp to header' do
       header = subject.send(:request, {}.to_json).to_hash['x-sent'][0]
 
-      expect(header).to match(/\d{2}h\d{2}\s-\s\d{2}\/\d{2}\/\d{2}/)
+      expect(header).to match(%r{\d{2}h\d{2}\s-\s\d{2}/\d{2}/\d{2}})
     end
   end
 end
