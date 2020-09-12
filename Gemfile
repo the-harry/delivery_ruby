@@ -11,12 +11,6 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.7'
-
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
-
 group :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', require: false

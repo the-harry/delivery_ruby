@@ -14,7 +14,7 @@ SimpleCov.start 'rails' do
   add_filter '/tmp'
 end
 
-SimpleCov.minimum_coverage 80
+SimpleCov.minimum_coverage 90
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
