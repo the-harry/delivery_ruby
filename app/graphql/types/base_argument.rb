@@ -1,4 +1,4 @@
-module Types
-  class BaseArgument < GraphQL::Schema::Argument
-  end
+# frozen_string_literal: true
+
+class Types::BaseArgument < GraphQL::Schema::Argument
 end

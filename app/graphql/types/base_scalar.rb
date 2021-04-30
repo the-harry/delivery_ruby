@@ -1,4 +1,4 @@
-module Types
-  class BaseScalar < GraphQL::Schema::Scalar
-  end
+# frozen_string_literal: true
+
+class Types::BaseScalar < GraphQL::Schema::Scalar
 end
