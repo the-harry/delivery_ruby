@@ -58,7 +58,7 @@ To create a new order you must send a post request containing the raw order data
 ```bash
 curl -H 'Content-Type: application/json' \
      -d @spec/fixtures/raw_order.json \
-     'http://localhost/api/v1/orders'
+     http://localhost/api/v1/orders
 ```
 
 * Possible responses:
@@ -66,3 +66,12 @@ curl -H 'Content-Type: application/json' \
   - 201 - Successfully created
   - 422 - Cant create order, please check your params  
   - 503 - Cant send order to remote server
+
+
+## GraphQL queries
+
+```bash
+curl -H 'Content-Type: application/json' \
+     -d @spec/fixtures/query.json \
+     http://localhost/graphql
+```
