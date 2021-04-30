@@ -4,14 +4,25 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :all_customers, [CustomerType], null: false
+    field :all_items, [ItemType], null: false
+    field :all_orders, [OrderType], null: false
+    field :all_payments, [PaymentType], null: false
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def all_customers
+      Customer.all
+    end
+
+    def all_items
+      Item.all
+    end
+
+    def all_orders
+      Order.all
+    end
+
+    def all_payments
+      Payment.all
     end
   end
 end
